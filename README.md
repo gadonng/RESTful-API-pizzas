@@ -36,3 +36,5 @@ You can replace <Object> by either ingredients or pizzas
 
 ex: 192.168.99.100/ingredients verb: POST (gets all ingredients)
 	192.168.99.100/pizzas/42 verb: PUT (modify the pizza with the id 42)
+
+docker-compose run --rm web ./yii migrate/up --interactive=0
