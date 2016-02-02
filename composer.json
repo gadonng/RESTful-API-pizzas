@@ -1,6 +1,6 @@
 {
-	"name": "codemix/yii2-dockerized",
-	"description": "A template for docker based Yii 2 applications",
+	"name": "",
+	"description": "A Yii 2.0 RESTful App with docker",
 	"keywords": ["yii2", "framework", "docker", "application template"],
 	"type": "project",
 	"license": "MIT",
