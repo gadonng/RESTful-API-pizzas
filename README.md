@@ -37,6 +37,7 @@ to whatever you need.
 
 You can see/create/modify/delete ingredients and pizzas by calling these routes:
 
+	192.168.99.100/api/<version>/<object> verb: GET (gets all Object)
 	192.168.99.100/api/<version>/<object> verb: POST (create a new Object)
 	192.168.99.100/api/<version>/<object>/<id> verb: GET (gets an Object with a specific <id>)
 	192.168.99.100/api/<version>/<object>/<id> verb: PUT (Modify an existing Object with a specific <id>)
