@@ -3,11 +3,11 @@
 use yii\db\Schema;
 use yii\db\Migration;
 
-class m160128_164545_create_pizzas_table extends Migration
+class m160202_085851_create_pizza extends Migration
 {
     public function up()
     {
-        $this->createTable('pizzas', [
+        $this->createTable('pizza', [
             'id' => $this->primaryKey(),
             'name' => $this->string()->notNull(),
         ]);
@@ -15,7 +15,7 @@ class m160128_164545_create_pizzas_table extends Migration
 
     public function down()
     {
-        $this->dropTable('pizzas');
+        $this->dropTable('pizza');
     }
 
     /*

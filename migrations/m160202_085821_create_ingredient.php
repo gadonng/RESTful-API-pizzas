@@ -3,18 +3,19 @@
 use yii\db\Schema;
 use yii\db\Migration;
 
-class m160128_164606_create_ingredients_pizzas_table extends Migration
+class m160202_085821_create_ingredient extends Migration
 {
     public function up()
     {
-
+        $this->createTable('ingredient', [
+            'id' => $this->primaryKey(),
+            'name' => $this->string()->notNull(),
+        ]);
     }
 
     public function down()
     {
-        echo "m160128_164606_create_ingredients_pizzas_table cannot be reverted.\n";
-
-        return false;
+        $this->dropTable('ingredient');
     }
 
     /*

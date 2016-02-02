@@ -10,7 +10,7 @@ use yii\db\ActiveRecord;
  * @property integer $id
  * @property string $name
  */
-class Ingredients extends ActiveRecord
+class Pizza extends ActiveRecord
 {
 
     /**
@@ -31,5 +31,16 @@ class Ingredients extends ActiveRecord
     public function getId()
     {
         return $this->getPrimaryKey();
+    }
+
+    public function getPizzaIngredients()
+    {
+        return $this->hasMany(PizzaIngredient::className(), ['pizza_id' => 'id']);
+    }
+
+    public function getIngredients()
+    {
+        return $this->hasMany(Ingredient::className(), ['id' => 'ingredient_id'])
+                    ->viaTable('pizzaIngredients');
     }
 }

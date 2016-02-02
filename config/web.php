@@ -56,9 +56,9 @@ $config = [
             'showScriptName' => false,
             'rules'=>array(
                 ['class' => 'yii\rest\UrlRule',      //makes all rests routes
-                'controller' => 'ingredients'],      //for ingredients
+                'controller' => 'api/ingredient'],      //for ingredients
                 ['class' => 'yii\rest\UrlRule',      //and
-                'controller' => 'pizzas']            //for pizzas calling respectively IngredientsController and PizzasController
+                'controller' => 'api/pizza']            //for pizzas calling respectively IngredientsController and PizzasController
             ),
         ],
         'user' => [

@@ -12,7 +12,7 @@ then use:
 docker-compose up
 ```
 
-Now you have a built image with an Apache, a yii 2.0 app and a MySQL running,
+Now you have a built image with an Apache, a yii 2.0 app and a 5.6 MySQL running,
 you can access the server with:
 
 http://<Your-github-ip>:8080
@@ -22,7 +22,8 @@ before using the api you should do a migration (after docker-compose up):
 docker-compose run --rm web ./yii migrate/up --interactive=0
 ```
 
-you can use all the yii commands this way
+you can use all the yii commands this way,
+if you can't use the interactive version of docker-compose run you should add the --interactive=0 to yii commands.
 ```sh
 docker-compose run --rm web ./yii <command>
 ```
@@ -51,9 +52,13 @@ ex: 192.168.99.100/api/v1/ingredients verb: POST (gets all ingredients)
 Possible upgrades
 ------------------
 
-- add a modular structure so we have multiple folders in root like: frontend/ backend/ and api/ for the rest api where we can also manage versionning
+There is still room for improvements:
 
-- adding filters options so we can search pizzas with kinds of ingredients
+- add a modular structure so we have multiple folders in root like: frontend/ backend/ and api/ for the rest api where we can also manage versionning, see http://www.yiiframework.com/doc-2.0/guide-rest-versioning.html
+
+- adding filters options so we can do deeper searchs
 
 - making a docker image for BDD so we don't use the basic 5.6 mysql image but an image with migrations and population already done, with versionning so we easily can retrieve an old state.
+	(need hosting image, and change the load of 5.6mysql in docker-compose.yml)
 
+- could implement a User access control
