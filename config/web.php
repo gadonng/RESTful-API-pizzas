@@ -55,10 +55,26 @@ $config = [
             'enableStrictParsing' => true,
             'showScriptName' => false,
             'rules'=>array(
-                ['class' => 'yii\rest\UrlRule',      //makes all rests routes
-                'controller' => 'api/ingredient'],      //for ingredients
-                ['class' => 'yii\rest\UrlRule',      //and
-                'controller' => 'api/pizza']            //for pizzas calling respectively IngredientsController and PizzasController
+            [
+                'class' => 'yii\rest\UrlRule',          //makes all rests routes for ingredients
+                'controller' => 'api/ingredient',
+                'extraPatterns' =>
+                [
+                    'POST api/ingredient/<id>/relationships/pizza' => 'api/ingredient/createLinkPizza',
+                    'PATCH api/ingredient/<id>/relationships/pizza' => 'api/ingredient/updateLinksPizza',
+                    'DELETE api/ingredient/<id>/relationships/pizza' => 'api/ingredient/deleteLinkPizza'
+                ]
+            ],
+                ['class' => 'yii\rest\UrlRule',         //makes all rests routes for pizzas
+                'controller' => 'api/pizza',
+                'extraPatterns' =>
+                [
+                    'POST api/pizza/<id>/relationships/ingredient' => 'api/pizza/createLinkIngredient',
+                    'PATCH api/pizza/<id>/relationships/ingredient' => 'api/pizza/updateLinksIngredient',
+                    'DELETE api/pizza/<id>/relationships/ingredient' => 'api/pizza/deleteLinkIngredient'
+                    ],
+                ],         
+
             ),
         ],
         'user' => [
