@@ -55,26 +55,28 @@ $config = [
             'enableStrictParsing' => true,
             'showScriptName' => false,
             'rules'=>array(
-            [
-                'class' => 'yii\rest\UrlRule',          //makes all rests routes for ingredients
-                'controller' => 'api/ingredient',
-                'extraPatterns' =>
                 [
-                    'POST api/ingredient/<id>/relationships/pizza' => 'api/ingredient/createLinkPizza',
-                    'PATCH api/ingredient/<id>/relationships/pizza' => 'api/ingredient/updateLinksPizza',
-                    'DELETE api/ingredient/<id>/relationships/pizza' => 'api/ingredient/deleteLinkPizza'
-                ]
-            ],
-                ['class' => 'yii\rest\UrlRule',         //makes all rests routes for pizzas
-                'controller' => 'api/pizza',
-                'extraPatterns' =>
+                    'class' => 'yii\rest\UrlRule',          //makes all rests routes for ingredients
+                    'controller' => 'api/ingredient',
+                    'extraPatterns' =>
+                    [
+                        'GET <id>/relationships/pizza' => 'view-link-pizza',
+                        'POST <id>/relationships/pizza' => 'create-link-pizza',
+                        'PATCH <id>/relationships/pizza' => 'update-link-pizza',
+                        'DELETE <id>/relationships/pizza' => 'delete-link-pizza'
+                    ]
+                ],
                 [
-                    'POST api/pizza/<id>/relationships/ingredient' => 'api/pizza/createLinkIngredient',
-                    'PATCH api/pizza/<id>/relationships/ingredient' => 'api/pizza/updateLinksIngredient',
-                    'DELETE api/pizza/<id>/relationships/ingredient' => 'api/pizza/deleteLinkIngredient'
+                    'class' => 'yii\rest\UrlRule',         //makes all rests routes for pizzas
+                    'controller' => 'api/pizza',
+                    'extraPatterns' =>
+                    [
+                        'GET <id>/relationships/ingredient' => 'view-link-ingredient',
+                        'POST <id>/relationships/ingredient' => 'create-link-ingredient',
+                        'PATCH <id>/relationships/ingredient' => 'update-link-ingredient',
+                        'DELETE <id>/relationships/ingredient' => 'delete-link-ingredient'
                     ],
-                ],         
-
+                ],
             ),
         ],
         'user' => [
