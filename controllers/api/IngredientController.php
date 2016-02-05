@@ -123,8 +123,6 @@ class IngredientController extends ActiveController
     		$pizza = Pizza::find()->where(['id' => $array_pizza["id"]])->one();
     		if (!$pizza)
     			throw new HttpException(404, "Pizza with id:$id, Not found.");
-    		else if (!isset($array_pizza["quantity"]))
-    			throw new HttpException(409, "You must enter a quantity when assigning an ingredient to a pizza.");
     		else
     		{
     			$pizza_ingredient = PizzaIngredient::find()->where(['pizza_id' => $pizza->id, 'ingredient_id' => $ingredient->id]);

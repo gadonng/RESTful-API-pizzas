@@ -99,6 +99,7 @@ class PizzaController extends ActiveController
     		else
     		{
     			$pizza_ingredient = PizzaIngredient::find()->where(['pizza_id' => $pizza->id, 'ingredient_id' => $ingredient->id]);
+    			var_dump($pizza_ingredient);
     			if ($pizza_ingredient)
     			{
     				$pizza_ingredient->quantity = $array_ingredient["quantity"];
@@ -123,8 +124,6 @@ class PizzaController extends ActiveController
     		$ingredient = Ingredient::find()->where(['id' => $array_ingredient["id"]])->one();
     		if (!$ingredient)
     			throw new HttpException(404, "Ingredient with id:$id, Not found.");
-    		else if (!isset($array_ingredient["quantity"]))
-    			throw new HttpException(409, "You must enter a quantity when assigning an ingredient to a ingredient.");
     		else
     		{
     			$pizza_ingredient = PizzaIngredient::find()->where(['pizza_id' => $pizza->id, 'ingredient_id' => $ingredient->id]);
